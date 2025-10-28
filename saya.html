@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Imut 😄</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffb6c1, #ffe4b5, #add8e6);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #ff69b4;
+      color: white;
+      padding: 20px;
+      font-size: 2em;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      margin: 40px auto;
+      max-width: 700px;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .funny-text {
+      color: #ff1493;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .image-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .image-group img {
+      border-radius: 20px;
+      transition: transform 0.3s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    .img-left {
+      width: 280px;
+    }
+
+    .img-right {
+      width: 220px;
+    }
+
+    .image-group img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    footer {
+      background-color: #ffa07a;
+      padding: 15px;
+      color: white;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    /* Animasi Love dan Teks */
+    .love {
+      position: absolute;
+      font-size: 2rem;
+      color: #ff1493;
+      animation: floatUp 1s ease-out forwards;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🌸 Selamat Datang di Dunia Gemas 🌸
+  </header>
+
+  <div class="container">
+    <p class="funny-text">Haiii! Lihat dua gambar gemas ini 😍</p>
+
+    <div class="image-group">
+      <img src="pe.jpeg" alt="Kucing lucu" class="img-left">
+      <img src="pj.jpeg" alt="Anjing lucu" class="img-right">
+    </div>
+
+    <p class="funny-text">Gemaasss dan lucu bukannn? 🐱🐶</p>
+  </div>
+
+  <footer>
+    &copy; 2025 Gemas | Dibuat dengan ❤️ by Ibra
+  </footer>
+
+  <script>
+    // Saat gambar diklik, munculkan efek hati dan tulisan "Gemas!"
+    document.querySelectorAll(".image-group img").forEach(img => {
+      img.addEventListener("click", (e) => {
+        const container = document.querySelector(".container");
+        const love = document.createElement("div");
+        love.classList.add("love");
+
+        // Acak posisi sedikit biar lucu
+        const x = e.pageX - container.offsetLeft - 20 + Math.random() * 40;
+        const y = e.pageY - container.offsetTop - 20 + Math.random() * 40;
+
+        // Pilih acak antara ❤️ atau kata “Gemas!”
+        const content = Math.random() > 0.5 ? "❤️" : "✨ GEMAS! ✨";
+        love.textContent = content;
+
+        love.style.left = x + "px";
+        love.style.top = y + "px";
+        container.appendChild(love);
+
+        // Hapus setelah animasi selesai
+        setTimeout(() => love.remove(), 1000);
+      });
+    });
+  </script>
+</body>
+</html>
